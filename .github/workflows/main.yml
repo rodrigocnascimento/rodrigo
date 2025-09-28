@@ -1,6 +1,5 @@
 # Workflow para automatizar build e deploy para GitHub Pages usando peaceiris/actions-gh-pages
 name: Build and Deploy to GitHub Pages
-
 # Controla quando a ação será executada
 on:
   # Aciona o workflow em push ou merge na branch main
@@ -8,18 +7,15 @@ on:
     branches: [main]
   # Permite executar este workflow manualmente da aba Actions
   workflow_dispatch:
-
 # Configurar permissões para o GITHUB_TOKEN
 permissions:
   contents: read
   pages: write
   id-token: write
-
 # Permitir apenas um deployment simultâneo
 concurrency:
   group: "pages"
   cancel-in-progress: false
-
 jobs:
   # Job para build e deploy
   build-and-deploy:
@@ -58,7 +54,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           # Token do GitHub para autenticação
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH_PAT }}
           # Diretório com conteúdo para publicar
           publish_dir: ./dist
           # Branch de destino para GitHub Pages
