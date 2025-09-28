@@ -1,5 +1,5 @@
-# Workflow para automatizar publicação estática no GitHub Pages
-name: Deploy to GitHub Pages
+# Workflow para automatizar build e deploy para GitHub Pages usando peaceiris/actions-gh-pages
+name: Build and Deploy to GitHub Pages
 
 # Controla quando a ação será executada
 on:
@@ -9,25 +9,22 @@ on:
   # Permite executar este workflow manualmente da aba Actions
   workflow_dispatch:
 
-# Configurar permissões para o GITHUB_TOKEN para permitir deployment no Pages
+# Configurar permissões para o GITHUB_TOKEN
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Permitir apenas um deployment simultâneo, pulando execuções em andamento entre a execução em andamento e a mais recente em fila.
-# No entanto, NÃO cancele execuções em andamento, pois queremos permitir que esses deployments de produção sejam concluídos.
+# Permitir apenas um deployment simultâneo
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Job único para build e deploy
+  # Job para build e deploy
   build-and-deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    
     steps:
       # Faz checkout do repositório
       - name: Checkout
@@ -44,21 +41,31 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
-      # Executa o build (copia/transpila src para raiz)
+      # Executa o build para pasta dist
       - name: Build website
-        run: npm run build
+        run: |
+          npm run build
+          # Cria pasta dist se não existir
+          mkdir -p dist
+          # Copia todo conteúdo compilado para dist
+          cp -r * dist/ 2>/dev/null || true
+          # Remove arquivos desnecessários da dist
+          cd dist
+          rm -rf node_modules .git .github src package*.json .prettierrc .gitignore tags 2>/dev/null || true
       
-      # Configura GitHub Pages
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      
-      # Faz upload dos artefatos da raiz do projeto
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
-      
-      # Faz deploy no GitHub Pages
+      # Deploy para GitHub Pages usando peaceiris/actions-gh-pages
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          # Token do GitHub para autenticação
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Diretório com conteúdo para publicar
+          publish_dir: ./dist
+          # Branch de destino para GitHub Pages
+          publish_branch: gh-pages
+          # Força push (substitui conteúdo anterior)
+          force_orphan: true
+          # Configurações de commit
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Deploy from main branch: ${{ github.sha }}'
