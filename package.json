@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "$(npm bin)/httpster .",
-    "build": "npm run clean && npm run copy",
+    "build": "npm run clean && cp src/index.html ./index.html && npm run copy",
     "clean": "rm -rf ./css ./js ./img *.html *.txt || true",
     "copy": "cp -r ./src/* .",
     "deploy": "npm run build"
@@ -16,7 +16,8 @@
     "type": "git",
     "url": "git+https://github.com/rodrigocnascimento/rodrigocnascimento.github.io.git"
   },
-  "keywords": [],
+  "keywords": [
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
