@@ -6,7 +6,11 @@
     "httpster": "^1.0.3"
   },
   "scripts": {
-    "start": "$(npm bin)/httpster ."
+    "start": "$(npm bin)/httpster .",
+    "build": "npm run clean && npm run copy",
+    "clean": "rm -rf ./css ./js ./img *.html *.txt || true",
+    "copy": "cp -r ./src/* .",
+    "deploy": "npm run build"
   },
   "repository": {
     "type": "git",
