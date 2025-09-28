@@ -1,1 +1,9 @@
 node_modules/*
+# Build artifacts - these are generated from src/ during build
+index.html
+404.html
+css/
+js/
+img/
+humans.txt
+robots.txt
