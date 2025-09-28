@@ -56,12 +56,12 @@ jobs:
           rm -rf node_modules .git .github src package*.json .prettierrc .gitignore tags 2>/dev/null || true
       
       # Deploy para GitHub Pages usando peaceiris/actions-gh-pages
-      # ATUALIZAÇÃO: Configurado para usar Personal Access Token (GH_PAT) para autenticação
+      # ATUALIZAÇÃO: Configurado para usar GITHUB_TOKEN nativo para autenticação
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          # Token personalizado do GitHub para autenticação (GH_PAT configurado nos secrets)
-          github_token: ${{ secrets.GH_PAT }}
+          # Token nativo do GitHub para autenticação
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           # Diretório com conteúdo para publicar
           publish_dir: ./dist
           # Branch de destino para GitHub Pages
