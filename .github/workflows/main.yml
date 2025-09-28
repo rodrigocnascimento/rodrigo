@@ -1,38 +1,64 @@
-# This is a basic workflow to help you get started with Actions
+# Workflow para automatizar publicação estática no GitHub Pages
+name: Deploy to GitHub Pages
 
-name: CI - rodrigo.world website
-
-# Controls when the action will run.
+# Controla quando a ação será executada
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
+  # Aciona o workflow em push ou merge na branch main
   push:
     branches: [main]
-
-  # Allows you to run this workflow manually from the Actions tab
+  # Permite executar este workflow manualmente da aba Actions
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# Configurar permissões para o GITHUB_TOKEN para permitir deployment no Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Permitir apenas um deployment simultâneo, pulando execuções em andamento entre a execução em andamento e a mais recente em fila.
+# No entanto, NÃO cancele execuções em andamento, pois queremos permitir que esses deployments de produção sejam concluídos.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  # Job único para build e deploy
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
-      - name: Deploy
-        uses: reggionick/s3-deploy@v3
+      # Faz checkout do repositório
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      # Configura ambiente Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          folder: src
-          bucket: ${{ secrets.S3_BUCKET }}
-          bucket-region: ${{ secrets.S3_BUCKET_REGION }}
-          dist-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-          invalidation: '*'
-          delete-removed: true
-          no-cache: true
-          private: true
+          node-version: '18'
+          cache: 'npm'
+      
+      # Instala dependências
+      - name: Install dependencies
+        run: npm ci
+      
+      # Executa o build (copia/transpila src para raiz)
+      - name: Build website
+        run: npm run build
+      
+      # Configura GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      
+      # Faz upload dos artefatos da raiz do projeto
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      
+      # Faz deploy no GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
