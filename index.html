@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <meta content="ie=edge" http-equiv="x-ua-compatible"/>
+    <meta charset="utf-8" />
+    <meta content="ie=edge" http-equiv="x-ua-compatible" />
     <title>rodrigo.world</title>
     <meta
       name="description"
       content="Rodrigo Nascimento is an experienced Software Engineer using NodeJS and AWS to ship awesome products on Internet"
     />
-    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <script
       src="https://kit.fontawesome.com/95bce97792.js"
       crossorigin="anonymous"
     ></script>
-    <link href="css/main.css" rel="stylesheet"/>
-    <link href="css/custom.css" rel="stylesheet"/>
+    <link href="css/main.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
     <style>
       .about-me {
         max-width: 520px;
@@ -55,18 +55,26 @@
         grid-template-columns: 1fr 1fr;
         gap: 12px;
       }
+      /* Updated styles for header layout */
+      #header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      #logo {
+        flex-shrink: 0;
+      }
       #show-about-btn {
-        display: block;
-        margin: 20px auto;
-        padding: 12px 24px;
+        padding: 6px 12px;
         background: #5254c5;
         color: white;
         border: none;
-        border-radius: 8px;
-        font-size: 1rem;
+        border-radius: 6px;
+        font-size: 0.85rem;
         font-weight: 600;
         cursor: pointer;
         transition: background-color 0.2s ease;
+        white-space: nowrap;
       }
       #show-about-btn:hover {
         background: #4144a8;
@@ -80,6 +88,10 @@
         }
         .about-me .stack {
           grid-template-columns: 1fr;
+        }
+        #header {
+          flex-direction: column;
+          gap: 10px;
         }
       }
     </style>
@@ -106,12 +118,12 @@
       <div id="logo">
         <span class="text-56pt" id="thx1138">r!</span>
       </div>
+      <button id="show-about-btn">About Me</button>
     </header>
     <main id="main">
       <div class="hello-world">
         <span class="text-white-bg">Welcome to rodrigo.world!</span>
-        <br/><br/>
-        <br/><br/>
+        <br /><br />
         <span class="text-white-bg">
           curto desenvolver algumas ideias tipo a
           <a
@@ -131,11 +143,10 @@
           </a>
         </span>
       </div>
-      <button id="show-about-btn">About Me</button>
       <div id="about-me-wrapper">
         <section class="about-me">
           <h2>About Me</h2>
-          <p><strong>Rodrigo Nascimento</strong> – Software Engineer & DevOps Specialist</p>
+          <p><strong>Rodrigo Nascimento – Software Engineer & DevOps Specialist</strong></p>
           <ul>
             <li>Full-stack web development</li>
             <li>DevOps e automação de infraestrutura</li>
@@ -145,19 +156,19 @@
           </ul>
           <div class="stack">
             <div>
-              <strong>Backend:</strong><br/> Node.js, Python
+              <strong>Backend:</strong><br /> Node.js, Python
             </div>
             <div>
-              <strong>DevOps:</strong><br/> Docker, AWS, Linux
+              <strong>DevOps:</strong><br /> Docker, AWS, Linux
             </div>
             <div>
-              <strong>Ferramentas:</strong><br/> tmux, Git, CI/CD pipelines
+              <strong>Ferramentas:</strong><br /> tmux, Git, CI/CD pipelines
             </div>
             <div>
-              <strong>Cloud:</strong><br/> AWS services, serverless architectures
+              <strong>Cloud:</strong><br /> AWS services, serverless architectures
             </div>
             <div>
-              <strong>Automation:</strong><br/> Browser automation, IaC
+              <strong>Automation:</strong><br /> Browser automation, IaC
             </div>
           </div>
         </section>
@@ -185,7 +196,6 @@
         const showAboutBtn = document.getElementById('show-about-btn');
         const aboutMeSection = document.querySelector('.about-me');
         let isVisible = false;
-
         showAboutBtn.addEventListener('click', function() {
           if (isVisible) {
             aboutMeSection.classList.remove('show');
