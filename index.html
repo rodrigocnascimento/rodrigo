@@ -65,6 +65,7 @@
       #logo {
         flex-shrink: 0;
         display: flex;
+        flex-direction: column;
         align-items: center;
         gap: 12px;
         cursor: pointer;
@@ -80,6 +81,7 @@
         font-weight: 600;
         transition: all 0.2s ease;
         white-space: nowrap;
+        margin-top: 8px;
       }
       #logo:hover .about-text {
         background: #5254c5;
@@ -108,14 +110,14 @@
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
+    <noscript>
+      <iframe
         src="https://www.googletagmanager.com/ns.html?id=GTM-KMXGHPW"
         height="0"
         width="0"
         style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
+      ></iframe>
+    </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <!--[if lt IE 8]>
       <p class="browserupgrade">
@@ -133,7 +135,7 @@
     <main id="main">
       <div class="hello-world">
         <span class="text-white-bg">Welcome to rodrigo.world!</span>
-        <br /><br /><br /><br />
+        <br /><br /><br /><br /><br />
         <span class="text-white-bg">
           curto desenvolver algumas ideias tipo a
           <a class="linkify" href="/rodrigocnascimento/raven" target="_blank">
@@ -148,7 +150,7 @@
       <div id="about-me-wrapper">
         <section class="about-me">
           <h2>About Me</h2>
-          <p>Rodrigo Nascimento – Software Engineer &amp; DevOps Specialist</p>
+          <p>Rodrigo Nascimento – Software Engineer & DevOps Specialist</p>
           <ul>
             <li>• Full-stack web development</li>
             <li>• DevOps e automação de infraestrutura</li>
