@@ -5,28 +5,67 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <title>rodrigo.world</title>
   <meta
-      name="description"
-      content="Rodrigo Nascimento is an experienced Software Engineer using NodeJS and AWS to ship awesome products on Internet"
-    />
+    name="description"
+    content="Rodrigo Nascimento is an experienced Software Engineer using NodeJS and AWS to ship awesome products on Internet"
+  />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script
-      src="https://kit.fontawesome.com/95bce97792.js"
-      crossorigin="anonymous"
-    ></script>
+    src="https://kit.fontawesome.com/95bce97792.js"
+    crossorigin="anonymous"
+  ></script>
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/custom.css" />
+  <style>
+    .about-me {
+      max-width: 520px;
+      margin: 40px auto;
+      background: #f3f4f6;
+      border-radius: 15px;
+      box-shadow: 0 6px 24px #0002;
+      padding: 32px 28px;
+    }
+    .about-me h2 {
+      text-align: center;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    .about-me ul {
+      margin: 0 0 18px 0;
+      padding: 0 0 0 20px;
+    }
+    .about-me li {
+      margin-bottom: 7px;
+      font-size: 1.04rem;
+    }
+    .about-me strong {
+      color: #5254c5;
+    }
+    .about-me .stack {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 600px) {
+      .about-me {
+        padding: 14px 10px;
+      }
+      .about-me .stack {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
   <noscript
     ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-KMXGHPW"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript
-  >
+      src="https://www.googletagmanager.com/ns.html?id=GTM-KMXGHPW"
+      height="0"
+      width="0"
+      style="display: none; visibility: hidden"
+    ></iframe
+  ></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <!--[if lt IE 8]>
     <p class="browserupgrade">
@@ -37,7 +76,7 @@
   <![endif]-->
   <header id="header">
     <div id="logo">
-      <span id="thx1138" class="text-56pt">r!</span>
+      <span class="text-56pt" id="thx1138">r!</span>
     </div>
   </header>
   <main id="main">
@@ -64,30 +103,36 @@
         </a>
       </span>
     </div>
-    
-    <section id="about-me" class="about-section">
-      <h2 class="text-white">About Me</h2>
-      <div class="text-white-bg">
-        <p><strong>Rodrigo Nascimento</strong> - Software Engineer & DevOps Specialist</p>
-        <h3>Main Skills:</h3>
-        <ul>
-          <li>Full-stack web development</li>
-          <li>DevOps and infrastructure automation</li>
-          <li>Cloud architecture and deployment</li>
-          <li>Browser automation and testing</li>
-          <li>System administration and optimization</li>
-        </ul>
-        <h3>Technology Stack:</h3>
-        <ul>
-          <li><strong>Backend:</strong> Node.js, Python</li>
-          <li><strong>DevOps:</strong> Docker, AWS, Linux</li>
-          <li><strong>Tools:</strong> tmux, Git, CI/CD pipelines</li>
-          <li><strong>Automation:</strong> Browser automation, Infrastructure as Code</li>
-          <li><strong>Cloud:</strong> AWS services, serverless architectures</li>
-        </ul>
+
+    <section class="about-me">
+      <h2>About Me</h2>
+      <p><strong>Rodrigo Nascimento</strong> – Software Engineer &amp; DevOps Specialist</p>
+      <ul>
+        <li>Full-stack web development</li>
+        <li>DevOps e automação de infraestrutura</li>
+        <li>Arquitetura e deploy em cloud</li>
+        <li>Automação de browser e testes</li>
+        <li>Administração e otimização de sistemas</li>
+      </ul>
+      <div class="stack">
+        <div>
+          <strong>Backend:</strong><br> Node.js, Python
+        </div>
+        <div>
+          <strong>DevOps:</strong><br> Docker, AWS, Linux
+        </div>
+        <div>
+          <strong>Ferramentas:</strong><br> tmux, Git, CI/CD pipelines
+        </div>
+        <div>
+          <strong>Cloud:</strong><br> AWS services, serverless architectures
+        </div>
+        <div>
+          <strong>Automation:</strong><br> Browser automation, IaC
+        </div>
       </div>
     </section>
-    
+
     <div id="latest-articles">
       <h2 class="text-white">Últimos posts</h2>
       <ul id="articles"></ul>
@@ -107,17 +152,17 @@
   <script src="js/main.js"></script>
   <!-- Google tag (gtag.js) -->
   <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-VV0Y5SFMM3"
-    ></script>
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-VV0Y5SFMM3"
+  ></script>
   <script>
-      window.dataLayer = window.dataLayer || []
-      function gtag() {
-        dataLayer.push(arguments)
-      }
-      gtag('js', new Date())
-      gtag('config', 'G-VV0Y5SFMM3')
-    </script>
+    window.dataLayer = window.dataLayer || []
+    function gtag() {
+      dataLayer.push(arguments)
+    }
+    gtag('js', new Date())
+    gtag('config', 'G-VV0Y5SFMM3')
+  </script>
   <!-- Updated: 2025-09-28 20:07 GMT-3 for GitHub Pages verification -->
 </body>
 </html>
