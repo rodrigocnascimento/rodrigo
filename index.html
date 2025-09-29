@@ -1,168 +1,217 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <title>rodrigo.world</title>
-  <meta
-    name="description"
-    content="Rodrigo Nascimento is an experienced Software Engineer using NodeJS and AWS to ship awesome products on Internet"
-  />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script
-    src="https://kit.fontawesome.com/95bce97792.js"
-    crossorigin="anonymous"
-  ></script>
-  <link rel="stylesheet" href="css/main.css" />
-  <link rel="stylesheet" href="css/custom.css" />
-  <style>
-    .about-me {
-      max-width: 520px;
-      margin: 40px auto;
-      background: #f3f4f6;
-      border-radius: 15px;
-      box-shadow: 0 6px 24px #0002;
-      padding: 32px 28px;
-    }
-    .about-me h2 {
-      text-align: center;
-      font-weight: 700;
-      font-size: 2rem;
-      margin-bottom: 16px;
-    }
-    .about-me ul {
-      margin: 0 0 18px 0;
-      padding: 0 0 0 20px;
-    }
-    .about-me li {
-      margin-bottom: 7px;
-      font-size: 1.04rem;
-    }
-    .about-me strong {
-      color: #5254c5;
-    }
-    .about-me .stack {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-    @media (max-width: 600px) {
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="ie=edge" http-equiv="x-ua-compatible"/>
+    <title>rodrigo.world</title>
+    <meta
+      name="description"
+      content="Rodrigo Nascimento is an experienced Software Engineer using NodeJS and AWS to ship awesome products on Internet"
+    />
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
+    <script
+      src="https://kit.fontawesome.com/95bce97792.js"
+      crossorigin="anonymous"
+    ></script>
+    <link href="css/main.css" rel="stylesheet"/>
+    <link href="css/custom.css" rel="stylesheet"/>
+    <style>
       .about-me {
-        padding: 14px 10px;
+        max-width: 520px;
+        margin: 40px auto;
+        background: #f3f4f6;
+        border-radius: 15px;
+        box-shadow: 0 6px 24px #0002;
+        padding: 32px 28px;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity 0.3s ease, max-height 0.3s ease, padding 0.3s ease;
+      }
+      .about-me.show {
+        opacity: 1;
+        max-height: 1000px;
+        padding: 32px 28px;
+      }
+      .about-me h2 {
+        text-align: center;
+        font-weight: 700;
+        font-size: 2rem;
+        margin-bottom: 16px;
+      }
+      .about-me ul {
+        margin: 0 0 18px 0;
+        padding: 0 0 0 20px;
+      }
+      .about-me li {
+        margin-bottom: 7px;
+        font-size: 1.04rem;
+      }
+      .about-me strong {
+        color: #5254c5;
       }
       .about-me .stack {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
       }
-    }
-  </style>
-</head>
-<body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript
-    ><iframe
-      src="https://www.googletagmanager.com/ns.html?id=GTM-KMXGHPW"
-      height="0"
-      width="0"
-      style="display: none; visibility: hidden"
-    ></iframe
-  ></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-  <!--[if lt IE 8]>
-    <p class="browserupgrade">
-      You are using an <strong>outdated</strong> browser. Please
-      <a href="//browsehappy.com/">upgrade your browser</a> to improve your
-      experience.
-    </p>
-  <![endif]-->
-  <header id="header">
-    <div id="logo">
-      <span class="text-56pt" id="thx1138">r!</span>
-    </div>
-  </header>
-  <main id="main">
-    <div class="hello-world">
-      <span class="text-white-bg">Welcome to rodrigo.world!</span>
-      <br />
-      <br />
-      <span class="text-white-bg">
-        curto desenvolver algumas ideias tipo a
-        <a
-          class="linkify"
-          href="https://github.com/rodrigocnascimento/raven"
-          target="_blank"
-        >
-          R.A.V.E.N
-        </a>
-        ou criar uns scripts
-        <a
-          class="linkify"
-          href="https://github.com/rodrigocnascimento/yoga-files"
-          target="_blank"
-        >
-          yoga files
-        </a>
-      </span>
-    </div>
-
-    <section class="about-me">
-      <h2>About Me</h2>
-      <p><strong>Rodrigo Nascimento</strong> – Software Engineer &amp; DevOps Specialist</p>
-      <ul>
-        <li>Full-stack web development</li>
-        <li>DevOps e automação de infraestrutura</li>
-        <li>Arquitetura e deploy em cloud</li>
-        <li>Automação de browser e testes</li>
-        <li>Administração e otimização de sistemas</li>
-      </ul>
-      <div class="stack">
-        <div>
-          <strong>Backend:</strong><br> Node.js, Python
-        </div>
-        <div>
-          <strong>DevOps:</strong><br> Docker, AWS, Linux
-        </div>
-        <div>
-          <strong>Ferramentas:</strong><br> tmux, Git, CI/CD pipelines
-        </div>
-        <div>
-          <strong>Cloud:</strong><br> AWS services, serverless architectures
-        </div>
-        <div>
-          <strong>Automation:</strong><br> Browser automation, IaC
-        </div>
+      #show-about-btn {
+        display: block;
+        margin: 20px auto;
+        padding: 12px 24px;
+        background: #5254c5;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+      #show-about-btn:hover {
+        background: #4144a8;
+      }
+      @media (max-width: 600px) {
+        .about-me {
+          padding: 0;
+        }
+        .about-me.show {
+          padding: 14px 10px;
+        }
+        .about-me .stack {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KMXGHPW"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <!--[if lt IE 8]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="//browsehappy.com/">upgrade your browser</a> to improve your
+        experience.
+      </p>
+    <![endif]-->
+    <header id="header">
+      <div id="logo">
+        <span class="text-56pt" id="thx1138">r!</span>
       </div>
-    </section>
+    </header>
+    <main id="main">
+      <div class="hello-world">
+        <span class="text-white-bg">Welcome to rodrigo.world!</span>
+        <br/><br/>
+        <br/><br/>
+        <span class="text-white-bg">
+          curto desenvolver algumas ideias tipo a
+          <a
+            class="linkify"
+            href="https://github.com/rodrigocnascimento/raven"
+            target="_blank"
+          >
+            R.A.V.E.N
+          </a>
+          ou criar uns scripts
+          <a
+            class="linkify"
+            href="https://github.com/rodrigocnascimento/yoga-files"
+            target="_blank"
+          >
+            yoga files
+          </a>
+        </span>
+      </div>
+      <button id="show-about-btn">About Me</button>
+      <div id="about-me-wrapper">
+        <section class="about-me">
+          <h2>About Me</h2>
+          <p><strong>Rodrigo Nascimento</strong> – Software Engineer & DevOps Specialist</p>
+          <ul>
+            <li>Full-stack web development</li>
+            <li>DevOps e automação de infraestrutura</li>
+            <li>Arquitetura e deploy em cloud</li>
+            <li>Automação de browser e testes</li>
+            <li>Administração e otimização de sistemas</li>
+          </ul>
+          <div class="stack">
+            <div>
+              <strong>Backend:</strong><br/> Node.js, Python
+            </div>
+            <div>
+              <strong>DevOps:</strong><br/> Docker, AWS, Linux
+            </div>
+            <div>
+              <strong>Ferramentas:</strong><br/> tmux, Git, CI/CD pipelines
+            </div>
+            <div>
+              <strong>Cloud:</strong><br/> AWS services, serverless architectures
+            </div>
+            <div>
+              <strong>Automation:</strong><br/> Browser automation, IaC
+            </div>
+          </div>
+        </section>
+      </div>
+      <div id="latest-articles">
+        <h2 class="text-white">Últimos posts</h2>
+        <ul id="articles"></ul>
+      </div>
+    </main>
+    <footer class="menu-contact">
+      <a href="//github.com/rodrigocnascimento" target="_blank">
+        <i class="fab fa-2x fa-github-alt"></i>
+      </a>
+      <a href="//twitter.com/_whiletruedo" target="_blank">
+        <i class="fab fa-2x fa-twitter"></i>
+      </a>
+      <a href="//linkedin.com/in/rodrigocesarnascimento" target="_blank">
+        <i class="fab fa-2x fa-linkedin"></i>
+      </a>
+    </footer>
+    <script src="js/main.js"></script>
+    <script>
+      // About Me toggle functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const showAboutBtn = document.getElementById('show-about-btn');
+        const aboutMeSection = document.querySelector('.about-me');
+        let isVisible = false;
 
-    <div id="latest-articles">
-      <h2 class="text-white">Últimos posts</h2>
-      <ul id="articles"></ul>
-    </div>
-  </main>
-  <footer class="menu-contact">
-    <a href="//github.com/rodrigocnascimento" target="_blank">
-      <i class="fab fa-2x fa-github-alt"></i>
-    </a>
-    <a href="//twitter.com/_whiletruedo" target="_blank">
-      <i class="fab fa-2x fa-twitter"></i>
-    </a>
-    <a href="//linkedin.com/in/rodrigocesarnascimento" target="_blank">
-      <i class="fab fa-2x fa-linkedin"></i>
-    </a>
-  </footer>
-  <script src="js/main.js"></script>
-  <!-- Google tag (gtag.js) -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-VV0Y5SFMM3"
-  ></script>
-  <script>
-    window.dataLayer = window.dataLayer || []
-    function gtag() {
-      dataLayer.push(arguments)
-    }
-    gtag('js', new Date())
-    gtag('config', 'G-VV0Y5SFMM3')
-  </script>
-  <!-- Updated: 2025-09-28 20:07 GMT-3 for GitHub Pages verification -->
-</body>
+        showAboutBtn.addEventListener('click', function() {
+          if (isVisible) {
+            aboutMeSection.classList.remove('show');
+            showAboutBtn.textContent = 'About Me';
+            isVisible = false;
+          } else {
+            aboutMeSection.classList.add('show');
+            showAboutBtn.textContent = 'Hide About Me';
+            isVisible = true;
+          }
+        });
+      });
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-VV0Y5SFMM3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-VV0Y5SFMM3')
+    </script>
+    <!-- Updated: 2025-09-28 20:07 GMT-3 for GitHub Pages verification -->
+  </body>
 </html>
