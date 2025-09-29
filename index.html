@@ -67,8 +67,10 @@
         display: flex;
         align-items: center;
         gap: 12px;
+        cursor: pointer;
+        user-select: none;
       }
-      #show-about-btn {
+      #logo .about-text {
         padding: 4px 10px;
         background: transparent;
         color: #5254c5;
@@ -76,11 +78,10 @@
         border-radius: 6px;
         font-size: 0.75rem;
         font-weight: 600;
-        cursor: pointer;
         transition: all 0.2s ease;
         white-space: nowrap;
       }
-      #show-about-btn:hover {
+      #logo:hover .about-text {
         background: #5254c5;
         color: white;
       }
@@ -126,28 +127,20 @@
     <header id="header">
       <div id="logo">
         <span class="text-56pt" id="thx1138">r!</span>
-        <button id="show-about-btn">About Me</button>
+        <span class="about-text">About Me</span>
       </div>
     </header>
     <main id="main">
       <div class="hello-world">
         <span class="text-white-bg">Welcome to rodrigo.world!</span>
-        <br /><br /><br /><br>
+        <br /><br /><br /><br />
         <span class="text-white-bg">
           curto desenvolver algumas ideias tipo a
-          <a
-            class="linkify"
-            href="/rodrigocnascimento/raven"
-            target="_blank"
-          >
+          <a class="linkify" href="/rodrigocnascimento/raven" target="_blank">
             R.A.V.E.N
           </a>
           ou criar uns scripts
-          <a
-            class="linkify"
-            href="/rodrigocnascimento/yoga-files"
-            target="_blank"
-          >
+          <a class="linkify" href="/rodrigocnascimento/yoga-files" target="_blank">
             yoga files
           </a>
         </span>
@@ -155,13 +148,13 @@
       <div id="about-me-wrapper">
         <section class="about-me">
           <h2>About Me</h2>
-          <p>Rodrigo Nascimento – Software Engineer & DevOps Specialist</p>
+          <p>Rodrigo Nascimento – Software Engineer &amp; DevOps Specialist</p>
           <ul>
-            <li>Full-stack web development</li>
-            <li>DevOps e automação de infraestrutura</li>
-            <li>Arquitetura e deploy em cloud</li>
-            <li>Automação de browser e testes</li>
-            <li>Administração e otimização de sistemas</li>
+            <li>• Full-stack web development</li>
+            <li>• DevOps e automação de infraestrutura</li>
+            <li>• Arquitetura e deploy em cloud</li>
+            <li>• Automação de browser e testes</li>
+            <li>• Administração e otimização de sistemas</li>
           </ul>
           <div class="stack">
             <div>
@@ -202,17 +195,18 @@
     <script>
       // About Me toggle functionality
       document.addEventListener('DOMContentLoaded', function() {
-        const showAboutBtn = document.getElementById('show-about-btn');
+        const logoDiv = document.getElementById('logo');
+        const aboutText = logoDiv.querySelector('.about-text');
         const aboutMeSection = document.querySelector('.about-me');
         let isVisible = false;
-        showAboutBtn.addEventListener('click', function() {
+        logoDiv.addEventListener('click', function() {
           if (isVisible) {
             aboutMeSection.classList.remove('show');
-            showAboutBtn.textContent = 'About Me';
+            aboutText.textContent = 'About Me';
             isVisible = false;
           } else {
             aboutMeSection.classList.add('show');
-            showAboutBtn.textContent = 'Hide About Me';
+            aboutText.textContent = 'Hide About Me';
             isVisible = true;
           }
         });
