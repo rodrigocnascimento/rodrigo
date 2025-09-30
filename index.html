@@ -27,6 +27,8 @@
         max-height: 0;
         overflow: hidden;
         transition: opacity 0.3s ease, max-height 0.3s ease, padding 0.3s ease;
+        position: relative;
+        z-index: 100;
       }
       .about-me.show {
         opacity: 1;
@@ -70,6 +72,9 @@
         gap: 12px;
         cursor: pointer;
         user-select: none;
+      }
+      #logo #thx1138 {
+        font-size: 4.5rem;
       }
       #logo .about-text {
         padding: 4px 10px;
@@ -135,7 +140,7 @@
     <main id="main">
       <div class="hello-world">
         <span class="text-white-bg">Welcome to rodrigo.world!</span>
-        <br /><br /><br /><br /><br />
+        <br /><br /><br /><br /><br /><br />
         <span class="text-white-bg">
           curto desenvolver algumas ideias tipo a
           <a class="linkify" href="/rodrigocnascimento/raven" target="_blank">
@@ -150,7 +155,7 @@
       <div id="about-me-wrapper">
         <section class="about-me">
           <h2>About Me</h2>
-          <p>Rodrigo Nascimento – Software Engineer & DevOps Specialist</p>
+          <p>Rodrigo Nascimento – Software Engineer &amp; DevOps Specialist</p>
           <ul>
             <li>• Full-stack web development</li>
             <li>• DevOps e automação de infraestrutura</li>
