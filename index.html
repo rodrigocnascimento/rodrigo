@@ -2,68 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta content="ie=edge" http-equiv="x-ua-compatible" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>rodrigo.world</title>
     <meta
       name="description"
       content="Rodrigo Nascimento is an experienced Software Engineer using NodeJS and AWS to ship awesome products on Internet"
     />
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script
       src="https://kit.fontawesome.com/95bce97792.js"
       crossorigin="anonymous"
     ></script>
-    <link href="css/main.css" rel="stylesheet" />
-    <link href="css/custom.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/custom.css" />
     <style>
-      .about-me {
-        max-width: 520px;
-        margin: 40px auto;
-        background: #f3f4f6;
-        border-radius: 15px;
-        box-shadow: 0 6px 24px #0002;
-        padding: 32px 28px;
-        opacity: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: opacity 0.3s ease, max-height 0.3s ease, padding 0.3s ease;
+      /* Header container with relative positioning */
+      .header-container {
         position: relative;
-        z-index: 100;
+        width: 100%;
       }
-      .about-me.show {
-        opacity: 1;
-        max-height: 1000px;
-        padding: 32px 28px;
-      }
-      .about-me h2 {
-        text-align: center;
-        font-weight: 700;
-        font-size: 2rem;
-        margin-bottom: 16px;
-      }
-      .about-me ul {
-        margin: 0 0 18px 0;
-        padding: 0 0 0 20px;
-      }
-      .about-me li {
-        margin-bottom: 7px;
-        font-size: 1.04rem;
-      }
-      .about-me strong {
-        color: #5254c5;
-      }
-      .about-me .stack {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
+      
       /* Updated styles for header layout */
       #header {
         display: flex;
         align-items: center;
         gap: 20px;
         justify-content: flex-end;
+        position: relative;
       }
+      
+      /* Logo with larger size */
       #logo {
         flex-shrink: 0;
         display: flex;
@@ -72,10 +40,17 @@
         gap: 12px;
         cursor: pointer;
         user-select: none;
+        width: 150px;
+        height: 150px;
+        justify-content: center;
       }
+      
+      /* Larger r! text */
       #logo #thx1138 {
         font-size: 4.5rem;
       }
+      
+      /* About Me button styling */
       #logo .about-text {
         padding: 4px 10px;
         background: transparent;
@@ -88,27 +63,107 @@
         white-space: nowrap;
         margin-top: 8px;
       }
+      
       #logo:hover .about-text {
         background: #5254c5;
         color: white;
       }
+      
+      /* About Me wrapper with absolute positioning */
+      #about-me-wrapper {
+        position: absolute;
+        top: 160px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 100;
+        width: 100%;
+        max-width: 520px;
+        pointer-events: none;
+      }
+      
+      /* About Me card with modern overlay styling */
+      .about-me {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        padding: 32px 28px;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity 0.3s ease, max-height 0.3s ease, padding 0.3s ease;
+        z-index: 100;
+        pointer-events: auto;
+      }
+      
+      .about-me.show {
+        opacity: 1;
+        max-height: 1000px;
+        padding: 32px 28px;
+      }
+      
+      .about-me h2 {
+        text-align: center;
+        font-weight: 700;
+        font-size: 2rem;
+        margin-bottom: 16px;
+        color: #333;
+      }
+      
+      .about-me ul {
+        margin: 0 0 18px 0;
+        padding: 0 0 0 20px;
+      }
+      
+      .about-me li {
+        margin-bottom: 7px;
+        font-size: 1.04rem;
+        color: #555;
+      }
+      
+      .about-me strong {
+        color: #5254c5;
+      }
+      
+      .about-me .stack {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      
+      .about-me .stack div {
+        color: #555;
+      }
+      
       @media (max-width: 600px) {
+        #logo {
+          width: 120px;
+          height: 120px;
+        }
+        
+        #logo #thx1138 {
+          font-size: 3.5rem;
+        }
+        
+        #about-me-wrapper {
+          max-width: 90%;
+          top: 140px;
+        }
+        
         .about-me {
           padding: 0;
         }
+        
         .about-me.show {
-          padding: 14px 10px;
+          padding: 20px 16px;
         }
+        
         .about-me .stack {
           grid-template-columns: 1fr;
         }
+        
         #header {
           flex-direction: column;
           gap: 10px;
-        }
-        #logo {
-          flex-direction: column;
-          gap: 8px;
         }
       }
     </style>
@@ -131,31 +186,19 @@
         experience.
       </p>
     <![endif]-->
-    <header id="header">
-      <div id="logo">
-        <span class="text-56pt" id="thx1138">r!</span>
-        <span class="about-text">About Me</span>
-      </div>
-    </header>
-    <main id="main">
-      <div class="hello-world">
-        <span class="text-white-bg">Welcome to rodrigo.world!</span>
-        <br /><br /><br /><br /><br /><br />
-        <span class="text-white-bg">
-          curto desenvolver algumas ideias tipo a
-          <a class="linkify" href="/rodrigocnascimento/raven" target="_blank">
-            R.A.V.E.N
-          </a>
-          ou criar uns scripts
-          <a class="linkify" href="/rodrigocnascimento/yoga-files" target="_blank">
-            yoga files
-          </a>
-        </span>
-      </div>
+    
+    <div class="header-container">
+      <header id="header">
+        <div id="logo">
+          <span class="text-56pt" id="thx1138">r!</span>
+          <span class="about-text">About Me</span>
+        </div>
+      </header>
+      
       <div id="about-me-wrapper">
         <section class="about-me">
           <h2>About Me</h2>
-          <p>Rodrigo Nascimento – Software Engineer &amp; DevOps Specialist</p>
+          <p><strong>Rodrigo Nascimento</strong> – Software Engineer & DevOps Specialist</p>
           <ul>
             <li>• Full-stack web development</li>
             <li>• DevOps e automação de infraestrutura</li>
@@ -182,11 +225,30 @@
           </div>
         </section>
       </div>
+    </div>
+    
+    <main id="main">
+      <div class="hello-world">
+        <span class="text-white-bg">Welcome to rodrigo.world!</span>
+        <br /><br /><br /><br /><br /><br /><br />
+        <span class="text-white-bg">
+          curto desenvolver algumas ideias tipo a
+          <a class="linkify" href="/rodrigocnascimento/raven" target="_blank">
+            R.A.V.E.N
+          </a>
+          ou criar uns scripts
+          <a class="linkify" href="/rodrigocnascimento/yoga-files" target="_blank">
+            yoga files
+          </a>
+        </span>
+      </div>
+      
       <div id="latest-articles">
         <h2 class="text-white">Últimos posts</h2>
         <ul id="articles"></ul>
       </div>
     </main>
+    
     <footer class="menu-contact">
       <a href="//github.com/rodrigocnascimento" target="_blank">
         <i class="fab fa-2x fa-github-alt"></i>
@@ -198,6 +260,7 @@
         <i class="fab fa-2x fa-linkedin"></i>
       </a>
     </footer>
+    
     <script src="js/main.js"></script>
     <script>
       // About Me toggle functionality
@@ -206,6 +269,7 @@
         const aboutText = logoDiv.querySelector('.about-text');
         const aboutMeSection = document.querySelector('.about-me');
         let isVisible = false;
+        
         logoDiv.addEventListener('click', function() {
           if (isVisible) {
             aboutMeSection.classList.remove('show');
@@ -219,6 +283,7 @@
         });
       });
     </script>
+    
     <!-- Google tag (gtag.js) -->
     <script
       async
@@ -232,6 +297,7 @@
       gtag('js', new Date())
       gtag('config', 'G-VV0Y5SFMM3')
     </script>
-    <!-- Updated: 2025-09-28 20:07 GMT-3 for GitHub Pages verification -->
+    
+    <!-- Updated: 2025-09-29 for logo and overlay improvements -->
   </body>
 </html>
